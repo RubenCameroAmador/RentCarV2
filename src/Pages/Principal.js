@@ -5,7 +5,11 @@ class Principal extends React.Component{
     render(){
         return(
             <div>
-                <Nav/>
+                <Nav
+                str1 = "Como Funciona"
+                str2 = "Servicio"
+                str3 = "Contacto"
+                str4 = "Join"/>
                 <Carrucel/>
             </div>
         )

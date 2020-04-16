@@ -1,81 +1,142 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+import axios from 'axios'
 import Nav from '../Components/Nav'
-class Registro extends React.Component{
-    state = {}
-
-    handleSubmit = e => {
-        e.preventDefault()
-        console.log(this.state)
+import '../Styles/Registro.css'
+class Registro extends React.Component {
+    state = {
+        nombre: '',
+        apellido: '',
+        id: '',
+        correo: '',
+        contraseña: '',
     }
-
-    handleChange = e => {
+    onChangenombre = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            nombre: e.target.value
         })
     }
-    render(){
+    onChangeapellido = (e) => {
+        this.setState({
+            apellido: e.target.value
+        })
+    }
+    onChangecorreo = (e) => {
+        this.setState({
+            correo: e.target.value
+        })
+    }
+    onChangecontraseña = (e) => {
+        this.setState({
+            contraseña: e.target.value
+        })
+    }
+
+    onSubmit = e => {
+        /* e.preventDefault() */
+        const res = axios.post('http://localhost:4000/users', {
+            nombre: this.state.nombre,
+            apellido: this.state.apellido,
+            id: this.validar(),
+            contraseña: this.state.contraseña,
+            correo: this.state.correo,
+        });
+        console.log(res)
+    }
+
+    async componentDidMount() {
+        const res = await axios.get('http://localhost:4000/users');
+        this.setState({ users: res.data });
+    }
+
+    validar() {
+        var sw = false
+        var ram=Math.floor((Math.random() * 100) + 1)
+        while (sw === false) {
+            var entro = false;
+            var i = 1;
+            this.state.users.map(users => {
+                if (users.id == ram) {
+                   ram = Math.floor((Math.random() * 7) + 1);
+                   if(i==1){
+                        entro = true;
+                        i=i+1;
+                   }
+                }
+            })
+            if(entro==false){
+                sw=true
+            }
+        }
+        return ram
+    }
+
+
+    render() {
         return (
             /*<button onClick={this.handleClick}>
                 Send
             </button>*/
-            <div className="container">
-            <form 
-                onSubmit={this.handleSubmit}
-            >
-                <div className="form-row">
-                    <div className="col">
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            placeholder="Nombre" 
-                            name="Nombre"
-                            onChange={this.handleChange}
-                            value={this.state.Nombre}
-                        />
-                    </div>
-                    <div className="col">
-                        <input 
-                            type="text" 
-                            className="form-control"
-                            placeholder="Apellido" 
-                            name="Apellido"
-                            onChange={this.handleChange}
-                            value={this.state.Apellido}
-                        />    
-                    </div>
-                </div>
-                <hr></hr>
-                <div className="form-group">
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Correo @uninorte.edu.co" 
-                        name="Correo"
-                        onChange={this.handleChange}
-                        value={this.state.Correo}
-                    />
-                </div>
-                <div className="form-row">
-                    <div className="col">
-                        <input 
-                            type="password" 
-                            className="form-control" 
-                            placeholder="Contraseña" 
-                            name="password"
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                        />
-                    </div>
-                </div>
-                <hr></hr>
-                <button 
-                    type="submit" 
-                    className="btn btn-primary"
+            <Fragment>
+            <Nav
+            str1 = ""
+            str2 = ""
+            str3 = ""
+            str4 = ""/>
+            <div className="container Registro-size" style={{ marginTop: "150px" }}>
+                <form
+                    onSubmit={this.onSubmit}
                 >
-                    Registrar
-                </button>
-            </form>
-        </div>
+                    <div className="form-row">
+                        <div className="col">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Nombre"
+                                name="Nombre"
+                                onChange={this.onChangenombre}
+                            />
+                        </div>
+                        <div className="col">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Apellido"
+                                name="Apellido"
+                                onChange={this.onChangenapellido}
+                            />
+                        </div>
+                    </div>
+                    <hr></hr>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Correo @uninorte.edu.co"
+                            name="Correo"
+                            onChange={this.onChangecorreo}
+                        />
+                    </div>
+                    <div className="form-row">
+                        <div className="col">
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="Contraseña"
+                                name="password"
+                                onChange={this.onChangecontraseña}
+                            />
+                        </div>
+                    </div>
+                    <hr></hr>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                    >
+                        Registrar
+                    </button>
+                </form>
+            </div>
+            </Fragment>
         )
     }
 }
