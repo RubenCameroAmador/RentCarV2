@@ -33,7 +33,7 @@ class Registro extends React.Component {
 
     onSubmit = e => {
         /* e.preventDefault() */
-        const res = axios.post('http://localhost:4000/users', {
+        const res = axios.post('https://rentcar-back.herokuapp.com/users', {
             nombre: this.state.nombre,
             apellido: this.state.apellido,
             id: this.validar(),
@@ -44,7 +44,7 @@ class Registro extends React.Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('http://localhost:4000/users');
+        const res = await axios.get('https://rentcar-back.herokuapp.com/users');
         this.setState({ users: res.data });
     }
 

@@ -5,12 +5,14 @@ import Registro from './Registro'
 import NotFound from './NotFound'
 import Nav from '../Components/Nav'
 import Login from '../Components/Login'
+import Admin from '../Pages/Admin'
 
 const App = () => (
     <BrowserRouter>
             <Route path="/RentCar" exact component={Principal}/>
             <Route path="/RentCar/Login" component={Login}/>
             <Route path="/RentCar/Registro" component={Registro}/>
+            <Route path="/RentCar/Admin" exact component={Admin}/>
             {/* <Route component={NotFound}/> */}
     </BrowserRouter>
 )
