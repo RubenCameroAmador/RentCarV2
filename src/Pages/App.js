@@ -6,6 +6,7 @@ import NotFound from './NotFound'
 import Nav from '../Components/Nav'
 import Login from '../Components/Login'
 import Admin from '../Pages/Admin'
+import Carro from './Carro'
 
 const App = () => (
     <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
             <Route path="/RentCar/Login" component={Login}/>
             <Route path="/RentCar/Registro" component={Registro}/>
             <Route path="/RentCar/Admin" exact component={Admin}/>
+            <Route path="/RentCar/Carro" exact component={Carro}/>
             {/* <Route component={NotFound}/> */}
     </BrowserRouter>
 )

@@ -28,11 +28,11 @@ class Login extends Component {
         if(this.ingresoNombre()===true && this.ingresoContraseña()===true){
             if(this.state.nombre==="Admin"){
 /*                     this.state.enlace = "/RentCar/Admin" */
-                    window.location.href = "https://rentcar-front.herokuapp.com/RentCar/Admin";
+                    window.location.href = "http://localhost:3000/RentCar/Admin";
                     console.log(this.state.enlace)
             }else{
                 /* this.state.enlace = "/RentCar/Login" */
-                window.location.href = "https://rentcar-front.herokuapp.com/RentCar/Login";
+                window.location.href = "http://localhost:3000/RentCar/Login";
                 console.log("Ingreso otro usuario")
             }
         }else{
