@@ -9,15 +9,15 @@ export default class Contact extends Component{
                 <h1> Contáctate con nosotros</h1>
             </center>
             <div class="row">
-                <div class="col-md-4">
-                    <p>
+                <div class="col-md-6">
+                    <p style={{color: 'black', marginTop: '100px', marginLeft: '250px', fontSize: '1rem'}}>
                         Universidad del Norte <br/>
                         Diseño de Software <br/>
                         Rubén Camero Amador <br/>
                         José Rodriguez Gonzales</p>
                 </div>
-                <div class="col-md-8">
-                    <img src="https://i.ibb.co/q9KtDN7/Contactanos.png" alt="Imagen de contacto"/>
+                <div class="col-md-6">
+                    <img src="https://i.ibb.co/hFcdnMm/undraw-contact-us-15o2.png" alt="Imagen de contacto" style = {{width: '400px', marginLeft: '10px', marginTop: '50px'}}/>
                 </div>
             </div>
          </div>
