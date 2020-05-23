@@ -10,7 +10,7 @@ import Carro from './Carro'
 
 const App = () => (
     <BrowserRouter>
-            <Route path="/RentCar" exact component={Principal}/>
+            <Route path="/" exact component={Principal}/>
             <Route path="/RentCar/Login" component={Login}/>
             <Route path="/RentCar/Registro" component={Registro}/>
             <Route path="/RentCar/Admin" exact component={Admin}/>
